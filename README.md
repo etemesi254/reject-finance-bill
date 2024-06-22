@@ -2,4 +2,4 @@
 
 Tuko na nyinyi
 
-##![Example](./pic1.png)
+![Example](./pic1.png)

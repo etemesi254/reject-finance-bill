@@ -7,6 +7,8 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -15,39 +17,15 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  font-family: "Roboto", sans-serif;
+
 }
-body{
+
+body {
   margin: 0;
 }
-#details{
-  overflow:scroll;
-  height: 100vh;
 
-}
-.single-mp {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin: 10px;
-}
 
-.single-mp td, .single-mp th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  width: 50%;
-}
-
-.single-mp tr:nth-child(even){background-color: #f2f2f2;}
-
-.single-mp tr:hover {background-color: #ddd;}
-
-.single-mp th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -103,13 +81,239 @@ fieldset {
   padding: 0;
 }
 
-#map { height: 99vh; width: 50vw }
-#container{
-  display: flex;
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
 }
-#details{
+
+dialog {
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+  padding: 15px;
+}
+
+
+select {
+  margin-left: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid #00a66a;
+  width: 100px;
+}
+
+.close-dialog {
+  display: flex;
+  align-items: flex-end;
+  justify-items: end;
+  justify-content: end;
+}
+
+
+.popup-red {
+  background-color: red !important;
+}
+
+.search-filters {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+
+.single-mp {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-mp td, .single-mp th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 50%;
+}
+
+.single-mp tr:nth-child(even) {
+  background-color: #04AA6D0F;
+}
+
+.single-mp tr:hover {
+  background-color: #ddd;
+}
+
+.single-mp th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+#menus {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row-reverse;
+  left: 0;
+
+}
+
+.voted-yes th {
+  background-color: red !important;
+}
+
+.voted-absent th {
+  background-color: orange !important;
+  color: black;
+}
+
+.voted-unknown th {
+  background-color: gray !important;
+}
+
+.voted-yes tr:nth-child(even) {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.voted-unknown tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+#details {
+  overflow: scroll;
+  height: 82vh;
+  position: static;
+  bottom: 0;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+#details::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+
+}
+
+#footer {
+  background-color: white;
+  width: 100vw;
+  z-index: 1000;
+  height: 3vh;
+  position: fixed;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+}
+
+#footer-icons {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#pin-mode {
+  z-index: 1000;
+  position: absolute;
+  right: 43px;
+  bottom: 80px;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+
+}
+
+#recenter-map {
+  z-index: 1000;
+  position: absolute;
+  right: 150px;
+  bottom: 80px;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+
+}
+
+#map {
+  height: 95vh;
+  width: 70vw
+}
+
+#details {
+  /*width: 30vw;*/
+}
+
+@media only screen and (max-width: 600px) {
+  #map {
+    display: none;
+  }
+  .single-mp{
+    width: 97vw;
+  }
+  table.fixed { table-layout:fixed; }
+  table.fixed td { overflow: hidden; }
+
+  #details {
+    width: 100vw !important;
+  }
+
+  .img-screenshot {
+    display: none !important;
+  }
+
+  .close-on-small-devices {
+    display: none;
+  }
+
+  .show-on-small-devices {
+    display: block;
+  }
+}
+.show-on-small-devices {
+  display: none;
+}
+
+#left-messages {
   width: 50vw;
 }
+
+#container {
+  display: flex;
+  height: 96vh;
+}
+
+
 .search {
   width: 100%;
   position: relative;
@@ -119,45 +323,61 @@ fieldset {
 .searchTerm {
   width: 100%;
   border: 3px solid #04AA6D;
-  border-right: none;
   padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
+  height: 30px;
+  border-radius: 5px;
   outline: none;
-  color: #9DBFAF;
+  color: #000000;
 }
 
-.searchTerm:focus{
-  color: #04AA6D;
+.searchTerm:focus {
+  color: #000000;
 }
 
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #04AA6D;
-  background: #04AA6D;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+#top-level {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
-
-}
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+.wrap {
+  position: sticky !important;
+  top: 0;
+  width: 100%;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+
+#filters {
+  margin-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
 
 /* ==========================================================================
    Helper classes
@@ -247,9 +467,9 @@ textarea {
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 

@@ -34,19 +34,150 @@
 </head>
 
 <body>
+
 <div id="container">
-  <div id="details">
-    <div class="wrap">
-      <div class="search">
-        <input type="text" class="searchTerm" id="search-input" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
+  <div id="details-container">
+    <div id="filters">
+      <div class="wrap">
+        <div class="search">
+          <input type="text" class="searchTerm" id="search-input" placeholder="Filter by name or constituency">
+        </div>
+      </div>
+
+      <div class="search-filters">
+        <div>
+          <span>Party</span>
+          <select id="political-party">
+            <option>ANY</option>
+            <option>WDM</option>
+            <option>ODM</option>
+            <option>KUP</option>
+            <option>JP</option>
+            <option>FORD-K</option>
+            <option>UDA</option>
+            <option>ANC</option>
+            <option>MDG</option>
+            <option>NOPEU</option>
+            <option>KANU</option>
+            <option>TSP</option>
+            <option>PAA</option>
+            <option>Independent</option>
+            <option>UDM</option>
+            <option>DAP-K</option>
+            <option>UPIA</option>
+            <option>DP</option>
+            <option>MCCP</option>
+            <option>GDDP</option>
+            <option>NAP-K</option>
+            <option>CCM</option>
+            <option>UPA</option>
+          </select>
+        </div>
+
+        <div>
+          <span>Status</span>
+          <select id="status">
+            <option>Any</option>
+            <option>Elected</option>
+            <option>Nominated</option>
+          </select>
+        </div>
+
+        <div>
+          <span>Vote</span>
+          <select id="voted">
+            <option>Any</option>
+            <option>No</option>
+            <option>Yes</option>
+            <option>Absent</option>
+            <option>Unresolved</option>
+          </select>
+        </div>
       </div>
     </div>
-      <div id="container-anchor"></div>
+    <div id="details">
+      <div id="table-class">
+        <div id="container-anchor"></div>
+      </div>
+    </div>
   </div>
-  <div id="map"></div>
+  <div id="map">
+    <div id="pin-mode">
+      <i class="fa fa-map-marker" style="color: #04AA6D;font-size: 2em;margin: auto"></i>
+    </div>
+    <div id="recenter-map">
+      <i class="fa fa-map-pin" style="color: rgba(255,0,0,0.6);font-size: 2em;margin: auto"></i>
+    </div>
+  </div>
+</div>
+<dialog id="information-dialog">
+  <div class="close-dialog">
+    <i class="fa fa-times" id="close-info-dialog" style="font-size: 2em;font-weight: 100"></i>
+  </div>
+  <div>
+    <h4 class="center">Usage</h4>
+    <hr>
+    <h5 class="center">Table</h5>
+    <p> Use the search and filter icons to filter to see how MPs voted for the Finance bill 2024</p>
+    <div
+      class="center">
+      <img src="/img/search.png" alt="Search and filter screenshot" style="object-fit: contain" class="img-screenshot">
+    </div>
+    <i class="center close-on-small-devices" style="font-size: 0.8em"> A screenshot of the search bar</i>
+
+    <div>
+      The colors of each table represent easy visualization of the vote of the MP
+    </div>
+
+    <div style="display: flex">
+      <div style="width: 20px;height: 20px;background-color: red;margin-left: 10px;margin-right: 10px"></div>
+      <div>represents an MP who voted <span style="color: red">yes</span></div>
+    </div>
+    <div style="display: flex">
+      <div style="width: 20px;height: 20px;background-color: green;margin-left: 10px;margin-right: 10px"></div>
+      <div>represents an MP who voted <span style="color: green">no</span></div>
+    </div>
+    <div style="display: flex">
+      <div style="width: 20px;height: 20px;background-color: orange;margin-left: 10px;margin-right: 10px"></div>
+      <div>represents an MP who was <span style="color: orange">absent</span></div>
+    </div>
+    <div style="display: flex">
+      <div style="width: 20px;height: 20px;background-color: gray;margin-left: 10px;margin-right: 10px"></div>
+      <div>represents an MP who <span style="color: gray">I'm not yet sure their vote status</span></div>
+    </div>
+    <hr>
+    <div>
+      <h5 class="center">Map</h5>
+      <div style="display: flex;align-items: center; ">
+        <div
+          style="display: flex; width: 30px;height: 30px;  border-radius: 50%;justify-content: center;border: 1px solid black;align-items: center">
+          <i class="fa fa-map-marker"
+             style="font-size: 1.5em;color: #00a66a;font-weight: 200;width: 30px;height: 30px;justify-content: center;display: flex;align-content: center"></i>
+        </div>
+        <span style="margin-left: 10px">Fills the map of Kenya with approximate coordinates of constituencies with colors
+          representing what that MP voted for</span>
+
+      </div>
+    </div>
+    <div style="display: flex;align-items: center">
+      <div
+        style="display: flex; width: 30px;height: 30px;  border-radius: 50%;justify-content: center;border: 1px solid black;align-items: center">
+        <i class="fa fa-map-pin" style="font-size: 1.5em;color: rgba(255,0,0,0.6);font-weight: 200"></i>
+      </div>
+      <p style="margin-left: 10px">Recalibrates the map to the whole Kenyan region</p>
+    </div>
+    <hr>
+    <p class="center" style="font-size: 0.9em;font-style: italic">Sometimes you gotta pop up ...</p>
+  </div>
+</dialog>
+<div id="footer">
+  <div id="footer-icons">
+    <i class="fa fa-info-circle" id="info-icon" style="font-size: 2em;color: #00a66a;font-weight: 200"></i>
+    <i class="fa fa-map show-on-small-devices" id="map-icon"
+       style="font-size: 2em;color: rgb(0,0,0,0.4);font-weight: 200;margin-left: 20px"></i>
+
+  </div>
+
 </div>
 
 <script src="js/app.js" defer></script>
